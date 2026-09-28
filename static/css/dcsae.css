@@ -157,3 +157,6 @@
 
 /* Teaser runs wider than the text column */
 .container.teaser-wide { max-width: 1240px; }
+
+/* Italic gradient text: pad the box so the slanted colon is not clipped by background-clip */
+.publication-title .gradient-text { padding: 0 0.22em 0 0.06em; margin-right: 0.05em; }
