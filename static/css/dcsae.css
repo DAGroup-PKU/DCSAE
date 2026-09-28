@@ -135,3 +135,22 @@
 @media screen and (max-width: 768px) {
   .content.has-text-justified, .section-lead, .split p { text-align: left !important; }
 }
+
+/* Highlight cards: reserve two lines for titles and labels so metrics line up across cards */
+.performance-card-title {
+  min-height: 2.8em;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.performance-card .metric-label {
+  min-height: 2.6em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.performance-card { padding-top: 2.4rem; }
+.performance-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media screen and (max-width: 900px) { .performance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media screen and (max-width: 480px) { .performance-grid { grid-template-columns: minmax(0, 1fr); } }
