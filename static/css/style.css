@@ -340,4 +340,6 @@ footer a { color: #9aa6c0; }
   .section-head { font-size: 1.6rem; }
   .hl-perf { font-size: 2.1rem; }
   .bar-row { grid-template-columns: 60px 1fr 56px; gap: 8px; }
+  .abstract p { text-align: left; }          /* justified text leaves big word gaps on phones */
+  .video-title { font-size: 1.3em; }
 }
