@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DC-SAE: Deep Compression Semantic Autoencoder for Faster Diffusion Convergence</title>
-  <meta name="description" content="DC-SAE is a 32x high-compression semantic autoencoder that pairs a frozen semantic encoder with an unconstrained pixel encoder, reaching 29.79 PSNR and 3.05 gFID on ImageNet 512x512 with 4.4x higher throughput than DC-AE.">
+  <meta name="description" content="DC-SAE is a 32x high-compression semantic autoencoder that pairs a frozen semantic encoder with an unconstrained pixel encoder, reaching 29.79 PSNR and 3.37 gFID on ImageNet 512x512 with 4.4x higher throughput than DC-AE.">
   <meta name="keywords" content="Tokenizer, Autoencoder, Deep Compression, Semantic Encoder, Diffusion, Image Generation">
   <meta name="author" content="Xu Huang, Ye Huang, Zijun Liao, Yuwei Niu, Xiaojie Li, Menghan Zhou, De Wen Soh, Xiaotong Li, Daquan Zhou">
   <meta property="og:type" content="article">
@@ -76,6 +76,11 @@
                 </a>
               </span>
               <span class="link-block">
+                <a href="https://huggingface.co/DAGroup-PKU/DCSAE" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">&#129303;</span><span>Models</span>
+                </a>
+              </span>
+              <span class="link-block">
                 <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-quote-right"></i></span><span>BibTeX</span>
                 </a>
@@ -121,7 +126,7 @@
         <span class="card-jump-hint">Click to view details &darr;</span>
         <h3 class="performance-card-title">Class-cond. Generation</h3>
         <div class="performance-metrics">
-          <div class="metric-item"><span class="metric-label">gFID vs DC-AE</span><span class="metric-value">&minus;59.7%</span></div>
+          <div class="metric-item"><span class="metric-label">gFID vs DC-AE</span><span class="metric-value">&minus;54.9%</span></div>
           <div class="metric-separator"></div>
           <div class="metric-item"><span class="metric-label">Compression</span><span class="metric-badge">32&times;</span></div>
         </div>
@@ -209,8 +214,8 @@
             DC-SAE consists of two key components: (1) a macro-level architecture that leverages semantic encoders to enable higher
             compression ratios, and (2) a pixel-level encoder that preserves low-level details for high-fidelity reconstruction.
             On ImageNet 512&times;512, DC-SAE achieves 32&times; spatial compression with <span class="metric-highlight">29.79</span> PSNR and
-            <span class="metric-highlight">3.05</span> gFID, outperforming the previous state-of-the-art high-compression tokenizer DC-AE by
-            <span class="metric-highlight">13.5%</span> and <span class="metric-highlight">59.7%</span> on PSNR and gFID respectively, with
+            <span class="metric-highlight">3.37</span> gFID, outperforming the previous state-of-the-art high-compression tokenizer DC-AE by
+            <span class="metric-highlight">13.5%</span> and <span class="metric-highlight">54.9%</span> on PSNR and gFID respectively, with
             higher throughput and faster diffusion convergence. Beyond class-conditional generation, a 1.6B-parameter DiT using DC-SAE achieves
             <span class="metric-highlight">0.84</span> on GenEval and <span class="metric-highlight">86.007</span> on DPG-Bench at 1024&times;1024.
           </p>
@@ -266,13 +271,13 @@
 
     <section class="chart-section" aria-label="DC-SAE vs DC-AE on ImageNet 512">
       <div class="chart-card">
-        <p class="has-text-centered normal-highlight is-size-6"><span class="title-highlight">2.45&times;</span> lower gFID than DC-AE</p>
+        <p class="has-text-centered normal-highlight is-size-6"><span class="title-highlight">2.22&times;</span> lower gFID than DC-AE</p>
         <p class="pipeline-caption">ImageNet 512&times;512, gFID w/o CFG (&darr;)</p>
-        <div class="bar-chart" role="img" aria-label="gFID: DC-SAE 3.05, DC-AE 7.47">
+        <div class="bar-chart" role="img" aria-label="gFID: DC-SAE 3.37, DC-AE 7.47">
           <div class="bar-row">
             <span class="bar-label">DC-SAE</span>
-            <div class="bar-track"><div class="bar-fill dcsae" style="--value: 3.05; --scale: 8"></div></div>
-            <span class="bar-value">3.05</span>
+            <div class="bar-track"><div class="bar-fill dcsae" style="--value: 3.37; --scale: 8"></div></div>
+            <span class="bar-value">3.37</span>
           </div>
           <div class="bar-row">
             <span class="bar-label">DC-AE</span>
@@ -316,7 +321,7 @@
           <tr><td>SiT-XL</td><td class="l">DC-AE-f32c32</td><td>32&times;</td><td>0.67</td><td>7.47</td><td>2.41</td><td>131.37</td><td>26.25</td><td>0.20</td></tr>
           <tr><td>USiT-H</td><td class="l">DC-AE-f32c32</td><td>32&times;</td><td>0.50</td><td>3.80</td><td>1.89</td><td>174.58</td><td>26.25</td><td>0.20</td></tr>
           <tr><td>USiT-2B</td><td class="l">DC-AE-f32c32</td><td>32&times;</td><td>1.58</td><td>2.90</td><td>1.72</td><td>187.68</td><td>26.25</td><td>0.20</td></tr>
-          <tr class="ours"><td>DiT-XL <small>+ DDT wide head</small></td><td class="l">DC-SAE</td><td>32&times;</td><td>0.83</td><td>3.05</td><td>1.99</td><td>205.83</td><td>29.79</td><td>0.16</td></tr>
+          <tr class="ours"><td>DiT-XL <small>+ DDT wide head</small></td><td class="l">DC-SAE</td><td>32&times;</td><td>0.83</td><td>3.37</td><td>1.99</td><td>205.83</td><td>29.79</td><td>0.16</td></tr>
         </tbody>
       </table>
     </div>
