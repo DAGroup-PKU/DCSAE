@@ -1,0 +1,66 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:03.049
+Deep-compression tokenizers make diffusion cheap,
+
+2
+00:00:03.149 --> 00:00:04.464
+but their latents are hard to learn.
+
+3
+00:00:05.500 --> 00:00:08.374
+Semantic encoders like DINOv2 train fast,
+
+4
+00:00:08.474 --> 00:00:10.940
+but at 32× they lose pixel detail.
+
+5
+00:00:11.690 --> 00:00:13.323
+Meet DC-SAE.
+
+6
+00:00:14.690 --> 00:00:17.880
+A frozen semantic encoder reads a downsampled image.
+
+7
+00:00:17.980 --> 00:00:20.166
+A pixel encoder keeps texture and color.
+
+8
+00:00:20.265 --> 00:00:22.897
+Both fuse into one compact latent for diffusion.
+
+9
+00:00:22.997 --> 00:00:25.719
+A decoder-side DeMerger restores dense detail.
+
+10
+00:00:26.690 --> 00:00:29.309
+Faces and text stay intact at 32×.
+
+11
+00:00:33.190 --> 00:00:38.021
+On ImageNet 512, gFID drops to 3.37,
+
+12
+00:00:38.121 --> 00:00:40.450
+and PSNR rises 3.5 dB.
+
+13
+00:00:41.200 --> 00:00:44.503
+And the autoencoder is 4.75× faster.
+
+14
+00:00:47.499 --> 00:00:49.415
+The joint latent also converges faster.
+
+15
+00:00:52.099 --> 00:00:55.205
+It scales to text-to-image: 0.84 on GenEval.
+
+16
+00:00:57.499 --> 00:01:01.565
+DC-SAE. High compression, fast convergence.
+

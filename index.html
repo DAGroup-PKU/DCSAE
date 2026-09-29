@@ -10,243 +10,227 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="DC-SAE: Deep Compression Semantic Autoencoder for Faster Diffusion Convergence">
   <meta property="og:image" content="static/images/teaser.jpg">
-  <meta name="theme-color" content="#2563eb">
+  <meta name="theme-color" content="#06070a">
 
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  <link rel="stylesheet" href="static/css/dcsae.css">
-
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="static/css/style.css">
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/index.js"></script>
 </head>
 <body>
 
-<button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-  <i class="fas fa-chevron-up"></i>
-</button>
+<div id="backdrop" aria-hidden="true"></div>
 
-<main id="main-content">
+<!-- ====================== Intro ====================== -->
+<section id="intro">
+  <div class="wrap">
+    <h1 class="title-art">DC-SAE</h1>
+    <div class="subtitle-line">Deep Compression Semantic Autoencoder for Faster Diffusion Convergence</div>
 
-<!-- ============ Hero ============ -->
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">
-            <span class="gradient-text">DC-SAE:</span>
-            Deep Compression <span class="accent-text">Semantic Autoencoder</span><br>
-            for Faster Diffusion Convergence
-          </h1>
+    <div class="authors">
+      <span class="author-block"><a href="#">Xu Huang<sup>1*</sup></a></span>
+      <span class="author-block"><a href="https://yeyeah.life/" target="_blank" rel="noopener">Ye Huang<sup>1*</sup></a></span>
+      <span class="author-block"><a href="#">Zijun Liao<sup>1*</sup></a></span>
+      <span class="author-block"><a href="#">Yuwei Niu<sup>1</sup></a></span>
+      <span class="author-block"><a href="#">Xiaojie Li</a></span>
+      <span class="author-block"><a href="#">Menghan Zhou<sup>2</sup></a></span>
+      <span class="author-block"><a href="#">De Wen Soh<sup>2</sup></a></span>
+      <span class="author-block"><a href="#">Xiaotong Li<sup>1</sup></a></span>
+      <span class="author-block"><a href="https://zhoudaquan.github.io/homepage.io/" target="_blank" rel="noopener">Daquan Zhou<sup>1&dagger;</sup></a></span>
+    </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="#">Xu Huang</a><sup>1*</sup>,</span>
-            <span class="author-block"><a href="https://yeyeah.life/">Ye Huang</a><sup>1*</sup>,</span>
-            <span class="author-block"><a href="#">Zijun Liao</a><sup>1*</sup>,</span>
-            <span class="author-block"><a href="#">Yuwei Niu</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="#">Xiaojie Li</a>,</span><br>
-            <span class="author-block"><a href="#">Menghan Zhou</a><sup>2</sup>,</span>
-            <span class="author-block"><a href="#">De Wen Soh</a><sup>2</sup>,</span>
-            <span class="author-block"><a href="#">Xiaotong Li</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://zhoudaquan.github.io/homepage.io/">Daquan Zhou</a><sup>1&dagger;</sup></span>
-          </div>
+    <div class="affiliations">
+      <p><sup>1</sup>Peking University &nbsp;&nbsp;&middot;&nbsp;&nbsp; <sup>2</sup>Singapore University of Technology and Design</p>
+      <p class="notes"><sup>*</sup> Equal Contribution &nbsp;&nbsp; <sup>&dagger;</sup> Corresponding Author</p>
+    </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Peking University</span>
-            <span class="author-block"><sup>2</sup>Singapore University of Technology and Design</span>
-            <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution &nbsp;&nbsp; <sup>&dagger;</sup>Corresponding Author</small></span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="#" aria-disabled="true" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper (coming soon)</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/DAGroup-PKU/DCSAE" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://huggingface.co/DAGroup-PKU/DCSAE" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">&#129303;</span><span>Models</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-quote-right"></i></span><span>BibTeX</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="links">
+      <a class="button disabled" href="#" aria-disabled="true" onclick="return false;">
+        <i class="far fa-file-alt"></i> Paper (coming soon)
+      </a>
+      <a class="button" href="https://github.com/DAGroup-PKU/DCSAE" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Code
+      </a>
+      <a class="button" href="https://huggingface.co/DAGroup-PKU/DCSAE" target="_blank" rel="noopener">
+        <span class="emoji" aria-hidden="true">&#129303;</span> Models
+      </a>
+      <a class="button" href="#video-demo">
+        <i class="fab fa-youtube"></i> Video
+      </a>
+      <a class="button" href="#BibTeX">
+        <i class="fas fa-quote-right"></i> BibTeX
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ Teaser ============ -->
-<section class="section pipeline-section">
-  <div class="container teaser-wide">
-    <div class="pipeline-card">
-      <img src="static/images/teaser.jpg" alt="DC-SAE teaser: reconstruction comparison, generation quality and autoencoder throughput" class="pipeline-image" loading="eager">
-      <p class="pipeline-caption teaser-caption">
-        DC-SAE at 32&times; spatial compression. (a) It keeps reconstruction detail that RAE loses and DC-AE only partly keeps.
-        (b) On ImageNet 512&times;512 it reaches better gFID than DC-AE. (c) Its autoencoder throughput is much higher.
-      </p>
+<!-- ====================== Video ====================== -->
+<div id="video-demo">
+  <p class="video-title">A One-Minute Introduction to DC-SAE</p>
+  <div class="video-frame">
+    <video controls playsinline preload="metadata" poster="static/videos/dcsae_promo_poster.jpg">
+      <source src="static/videos/dcsae_promo.mp4" type="video/mp4">
+      <track kind="subtitles" src="static/videos/dcsae_promo.vtt" srclang="en" label="English">
+    </video>
+  </div>
+</div>
+
+<!-- ====================== Abstract ====================== -->
+<section class="block abstract" id="abstract-section">
+  <div class="wrap">
+    <h3 class="section-head">Abstract</h3>
+    <p>
+      High-compression tokenizers are essential for scaling latent image generative models. However, aggressive compression creates a
+      fundamental tradeoff between reconstruction fidelity and generation efficiency: a high-compression image encoder increases the
+      learning difficulty of diffusion training, resulting in slow convergence. Recent representation autoencoders speed up diffusion
+      training by replacing VAE encoders with pretrained semantic encoders, yet they are typically limited to moderate compression and
+      lose pixel-level details necessary for faithful reconstruction.
+    </p>
+    <p>
+      To achieve both high compression and fast diffusion training, we propose <b>DC-SAE</b>, a Decoupled Compact Semantic Autoencoder.
+      DC-SAE consists of two key components: (1) a macro-level architecture that leverages semantic encoders to enable higher
+      compression ratios, and (2) a pixel-level encoder that preserves low-level details for high-fidelity reconstruction.
+      On ImageNet 512&times;512, DC-SAE achieves 32&times; spatial compression with <span class="hl">29.79</span> PSNR and
+      <span class="hl">3.37</span> gFID, outperforming the previous state-of-the-art high-compression tokenizer DC-AE by
+      <span class="hl">13.5%</span> and <span class="hl">54.9%</span> on PSNR and gFID respectively, with
+      higher throughput and faster diffusion convergence. Beyond class-conditional generation, a 1.6B-parameter DiT using DC-SAE achieves
+      <span class="hl">0.84</span> on GenEval and <span class="hl">86.007</span> on DPG-Bench at 1024&times;1024.
+    </p>
+  </div>
+</section>
+
+<!-- ====================== Teaser ====================== -->
+<section class="block" id="teaser-section">
+  <div class="wrap">
+    <figure class="figure-card" style="margin:0">
+      <img src="static/images/teaser.jpg" alt="DC-SAE teaser: reconstruction comparison, generation quality and autoencoder throughput" loading="eager" width="3625" height="1351">
+    </figure>
+    <p class="caption">
+      DC-SAE at 32&times; spatial compression. (a) It keeps reconstruction detail that RAE loses and DC-AE only partly keeps.
+      (b) On ImageNet 512&times;512 it reaches better gFID than DC-AE. (c) Its autoencoder throughput is much higher.
+    </p>
+  </div>
+</section>
+
+<!-- ====================== Performance at a glance ====================== -->
+<section class="block" id="highlights">
+  <div class="wrap">
+    <h3 class="section-head">Performance at a Glance</h3>
+    <p class="section-sub">
+      At the same 32&times; spatial compression as DC-AE, DC-SAE reconstructs more faithfully, generates better images,
+      runs its autoencoder over 4&times; faster, and scales to text-to-image generation.
+    </p>
+    <div class="hl-cards">
+      <a class="hl-card" href="#results-section">
+        <div class="hl-view">details &darr;</div>
+        <div class="hl-name">Reconstruction <span>ImageNet 512&times;512</span></div>
+        <div class="hl-label">PSNR &middot; vs DC-AE</div>
+        <div class="hl-perf">+13.5%</div>
+        <div class="hl-divider"></div>
+        <div class="hl-label">DC-SAE</div>
+        <div class="hl-badge">29.79 dB &middot; 32&times;</div>
+      </a>
+      <a class="hl-card" href="#results-section">
+        <div class="hl-view">details &darr;</div>
+        <div class="hl-name">Class-cond. Generation <span>ImageNet 512&times;512, w/o CFG</span></div>
+        <div class="hl-label">gFID &middot; vs DC-AE</div>
+        <div class="hl-perf">&minus;54.9%</div>
+        <div class="hl-divider"></div>
+        <div class="hl-label">DC-SAE</div>
+        <div class="hl-badge">3.37 gFID &middot; 32&times;</div>
+      </a>
+      <a class="hl-card" href="#throughput-section">
+        <div class="hl-view">details &darr;</div>
+        <div class="hl-name">AE Throughput <span>1024&times;1024, one H200</span></div>
+        <div class="hl-label">Speedup &middot; vs DC-AE</div>
+        <div class="hl-perf">4.41&times;</div>
+        <div class="hl-divider"></div>
+        <div class="hl-label">DC-SAE</div>
+        <div class="hl-badge">76.8 imgs/s &middot; 32&times;</div>
+      </a>
+      <a class="hl-card" href="#t2i-section">
+        <div class="hl-view">details &darr;</div>
+        <div class="hl-name">Text-to-Image <span>1.6B DiT @ 1024&sup2;</span></div>
+        <div class="hl-label">GenEval</div>
+        <div class="hl-perf">0.84</div>
+        <div class="hl-divider"></div>
+        <div class="hl-label">DPG-Bench</div>
+        <div class="hl-badge">86.007 &middot; 32&times;</div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============ Highlight cards ============ -->
-<section class="section performance-section">
-  <div class="container is-max-desktop">
-    <div class="performance-header">
-      <h2 class="performance-title">High Compression <span class="title-highlight">and</span> Fast Convergence</h2>
-    </div>
-    <div class="performance-grid">
-      <div class="performance-card clickable-card" onclick="location.href='#results-section'">
-        <span class="card-jump-hint">Click to view details &darr;</span>
-        <h3 class="performance-card-title">Reconstruction</h3>
-        <div class="performance-metrics">
-          <div class="metric-item"><span class="metric-label">PSNR vs DC-AE</span><span class="metric-value">+13.5%</span></div>
-          <div class="metric-separator"></div>
-          <div class="metric-item"><span class="metric-label">Compression</span><span class="metric-badge">32&times;</span></div>
-        </div>
-      </div>
-      <div class="performance-card clickable-card" onclick="location.href='#results-section'">
-        <span class="card-jump-hint">Click to view details &darr;</span>
-        <h3 class="performance-card-title">Class-cond. Generation</h3>
-        <div class="performance-metrics">
-          <div class="metric-item"><span class="metric-label">gFID vs DC-AE</span><span class="metric-value">&minus;54.9%</span></div>
-          <div class="metric-separator"></div>
-          <div class="metric-item"><span class="metric-label">Compression</span><span class="metric-badge">32&times;</span></div>
-        </div>
-      </div>
-      <div class="performance-card clickable-card" onclick="location.href='#throughput-section'">
-        <span class="card-jump-hint">Click to view details &darr;</span>
-        <h3 class="performance-card-title">AE Throughput</h3>
-        <div class="performance-metrics">
-          <div class="metric-item"><span class="metric-label">vs DC-AE @1024&sup2;</span><span class="metric-value">4.41&times;</span></div>
-          <div class="metric-separator"></div>
-          <div class="metric-item"><span class="metric-label">Compression</span><span class="metric-badge">32&times;</span></div>
-        </div>
-      </div>
-      <div class="performance-card clickable-card" onclick="location.href='#t2i-section'">
-        <span class="card-jump-hint">Click to view details &darr;</span>
-        <h3 class="performance-card-title">Text-to-Image</h3>
-        <div class="performance-metrics">
-          <div class="metric-item"><span class="metric-label">GenEval (1.6B DiT)</span><span class="metric-value">0.84</span></div>
-          <div class="metric-separator"></div>
-          <div class="metric-item"><span class="metric-label">Compression</span><span class="metric-badge">32&times;</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Why DC-SAE ============ -->
-<section class="section features-section">
-  <div class="container is-max-desktop">
-    <div class="features-header">
-      <h2 class="features-title">Why DC-SAE?</h2>
-      <p class="features-subtitle">Three design choices that make semantic tokenizers work at 32&times;</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <h3 class="feature-title">Pre-merge Semantic Compression</h3>
-        <p class="feature-description">
-          Adapt a <span class="feature-highlight is-size-5">frozen</span> DINOv2 / SigLIP / Qwen-ViT from 16&times; to 32&times;
-          <span class="feature-highlight">without retraining</span> it. We compress <em>before</em> semantic encoding,
+<!-- ====================== Why DC-SAE ====================== -->
+<section class="block" id="contributions">
+  <div class="wrap">
+    <h3 class="section-head">Why DC-SAE?</h3>
+    <p class="section-sub">Three design choices that make semantic tokenizers work at 32&times;.</p>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="icon"><i class="fas fa-compress-arrows-alt"></i></div>
+        <h4>Pre-merge Semantic Compression</h4>
+        <p>
+          Adapt a <span class="k">frozen</span> DINOv2 / SigLIP / Qwen-ViT from 16&times; to 32&times;
+          <span class="k">without retraining</span> it. We compress <em>before</em> semantic encoding,
           which beats merging tokens after encoding.
         </p>
       </div>
-      <div class="feature-card">
-        <h3 class="feature-title">Semantic&ndash;Pixel Dual Stream</h3>
-        <p class="feature-description">
-          An <span class="feature-highlight is-size-5">unconstrained pixel encoder</span> recovers texture, color and edges.
-          The frozen semantic branch keeps the latent <span class="feature-highlight">diffusion-friendly</span>.
+      <div class="why-card">
+        <div class="icon"><i class="fas fa-layer-group"></i></div>
+        <h4>Semantic&ndash;Pixel Dual Stream</h4>
+        <p>
+          An <span class="k">unconstrained pixel encoder</span> recovers texture, color and edges.
+          The frozen semantic branch keeps the latent <span class="k">diffusion-friendly</span>.
           Neither needs extra latent regularization.
         </p>
       </div>
-      <div class="feature-card">
-        <h3 class="feature-title">Decoder-side Spatial DeMerger</h3>
-        <p class="feature-description">
-          Each latent token expands into <span class="feature-highlight is-size-5">4 sub-tokens</span>, but only for the ViT decoder.
-          The DiT still sees the <span class="feature-highlight">short 32&times; sequence</span>.
+      <div class="why-card">
+        <div class="icon"><i class="fas fa-th"></i></div>
+        <h4>Decoder-side Spatial DeMerger</h4>
+        <p>
+          Each latent token expands into <span class="k">4 sub-tokens</span>, but only for the ViT decoder.
+          The DiT still sees the <span class="k">short 32&times; sequence</span>.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ Abstract + Pipeline ============ -->
-<section class="section hero is-light" id="method-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column">
-        <h2 class="title is-3">About DC-SAE</h2>
-        <div class="pipeline-card">
-          <img src="static/images/Pipeline-final.png" alt="DC-SAE pipeline" class="pipeline-image" loading="lazy">
-          <p class="pipeline-caption">
-            A frozen semantic encoder is adapted to a 32&times; token grid, and an unconstrained pixel branch keeps local detail.
-            The two latents are fused and decoded by a ViT decoder with Spatial DeMerger. The DiT is trained on the fused compact latent.
-          </p>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            High-compression tokenizers are essential for scaling latent image generative models. However, aggressive compression creates a
-            fundamental tradeoff between reconstruction fidelity and generation efficiency: a high-compression image encoder increases the
-            learning difficulty of diffusion training, resulting in slow convergence. Recent representation autoencoders speed up diffusion
-            training by replacing VAE encoders with pretrained semantic encoders, yet they are typically limited to moderate compression and
-            lose pixel-level details necessary for faithful reconstruction.
-          </p>
-          <p>
-            To achieve both high compression and fast diffusion training, we propose <b>DC-SAE</b>, a Decoupled Compact Semantic Autoencoder.
-            DC-SAE consists of two key components: (1) a macro-level architecture that leverages semantic encoders to enable higher
-            compression ratios, and (2) a pixel-level encoder that preserves low-level details for high-fidelity reconstruction.
-            On ImageNet 512&times;512, DC-SAE achieves 32&times; spatial compression with <span class="metric-highlight">29.79</span> PSNR and
-            <span class="metric-highlight">3.37</span> gFID, outperforming the previous state-of-the-art high-compression tokenizer DC-AE by
-            <span class="metric-highlight">13.5%</span> and <span class="metric-highlight">54.9%</span> on PSNR and gFID respectively, with
-            higher throughput and faster diffusion convergence. Beyond class-conditional generation, a 1.6B-parameter DiT using DC-SAE achieves
-            <span class="metric-highlight">0.84</span> on GenEval and <span class="metric-highlight">86.007</span> on DPG-Bench at 1024&times;1024.
-          </p>
-        </div>
-      </div>
-    </div>
+<!-- ====================== Method ====================== -->
+<section class="block" id="method-section">
+  <div class="wrap">
+    <h3 class="section-head">Method</h3>
+    <p class="section-sub">
+      A frozen semantic encoder is adapted to a 32&times; token grid, and an unconstrained pixel branch keeps local detail.
+      The two latents are fused and decoded by a ViT decoder with Spatial DeMerger. The DiT is trained on the fused compact latent.
+    </p>
+    <figure class="figure-card" style="margin:0">
+      <img src="static/images/Pipeline-final.png" alt="DC-SAE pipeline" loading="lazy" width="2531" height="1005">
+    </figure>
   </div>
 </section>
 
-<!-- ============ Analysis: why dual-stream ============ -->
-<section class="section case-gallery-section" id="analysis-section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 performance-title has-text-centered">Why Semantic Alone Is Not Enough</h2>
-    <p class="section-lead">
+<!-- ====================== Analysis ====================== -->
+<section class="block" id="analysis-section">
+  <div class="wrap">
+    <h3 class="section-head">Why Semantic Alone Is Not Enough</h3>
+    <p class="section-sub">
       Simply downsizing the input to push a frozen semantic encoder to 32&times; keeps the global structure, but reconstruction drops to
       about <b>15 PSNR</b> at 256&times;256. The latent also loses the fast convergence semantic features usually give, reaching only
       <b>7.15 gFID</b> after 80 DiT epochs. The semantic encoder was never trained to be invertible, so it throws away color statistics,
       texture, boundaries and high-frequency detail. Adding a jointly trained pixel branch fixes both problems.
     </p>
+    <figure class="figure-card" style="margin:0">
+      <img src="static/images/merge_figure.png" alt="DeMerger PSNR curve, convergence of joint vs single-branch latents, pre-merge vs post-merge illustration" loading="lazy" width="3971" height="790">
+    </figure>
+    <p class="caption">
+      (a) Spatial DeMerger improves validation PSNR (+1.05 dB). (b) DiT convergence at 32&times;: the joint semantic&ndash;pixel latent reaches
+      4.27 gFID at 80 epochs, vs 7.15 for semantic-only and 11.04 for pixel-only. (c) Pre-merge vs post-merge semantic compression.
+    </p>
 
-    <div class="pipeline-card">
-      <img src="static/images/merge_figure.png" alt="DeMerger PSNR curve, convergence of joint vs single-branch latents, pre-merge vs post-merge illustration" class="pipeline-image" loading="lazy">
-      <p class="pipeline-caption">
-        (a) Spatial DeMerger improves validation PSNR (+1.05 dB). (b) DiT convergence at 32&times;: the joint semantic&ndash;pixel latent reaches
-        4.27 gFID at 80 epochs, vs 7.15 for semantic-only and 11.04 for pixel-only. (c) Pre-merge vs post-merge semantic compression.
-      </p>
-    </div>
-
-    <div class="split">
-      <div>
-        <h3 class="subhead" style="text-align:left;margin-top:0">Where does reconstruction come from?</h3>
+    <div class="cols">
+      <div class="col-card">
+        <h4><span class="icon"><i class="fas fa-search"></i></span>Where does reconstruction come from?</h4>
         <p>
           We reconstruct images from the full latent, with the semantic part masked, and with the pixel part masked.
           Masking the <b>semantic</b> branch barely changes the output. Masking the <b>pixel</b> branch wrecks it.
@@ -256,201 +240,180 @@
           something a DiT learns quickly. The frozen encoder does not have to carry low-level information; the two branches split the work.
         </p>
       </div>
-      <div class="pipeline-card" style="margin:0">
-        <img src="static/images/dcsae_reconstruction_source.jpg" alt="Reconstructions with full latent, semantic masked, pixel masked" class="pipeline-image" loading="lazy">
-        <p class="pipeline-caption has-text-centered">Left to right: full latent, semantic branch masked, pixel branch masked.</p>
+      <div class="col-card" style="padding:18px">
+        <figure class="figure-card dark" style="margin:0">
+          <img src="static/images/dcsae_reconstruction_source.jpg" alt="Reconstructions with full latent, semantic masked, pixel masked" loading="lazy" width="948" height="936">
+        </figure>
+        <p class="caption" style="margin-bottom:0">Left to right: full latent, semantic branch masked, pixel branch masked.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ Main results ============ -->
-<section class="section case-gallery-section" id="results-section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 performance-title has-text-centered">ImageNet Class-Conditional Generation</h2>
-
-    <section class="chart-section" aria-label="DC-SAE vs DC-AE on ImageNet 512">
-      <div class="chart-card">
-        <p class="has-text-centered normal-highlight is-size-6"><span class="title-highlight">2.22&times;</span> lower gFID than DC-AE</p>
-        <p class="pipeline-caption">ImageNet 512&times;512, gFID w/o CFG (&darr;)</p>
-        <div class="bar-chart" role="img" aria-label="gFID: DC-SAE 3.37, DC-AE 7.47">
-          <div class="bar-row">
-            <span class="bar-label">DC-SAE</span>
-            <div class="bar-track"><div class="bar-fill dcsae" style="--value: 3.37; --scale: 8"></div></div>
-            <span class="bar-value">3.37</span>
-          </div>
-          <div class="bar-row">
-            <span class="bar-label">DC-AE</span>
-            <div class="bar-track"><div class="bar-fill base" style="--value: 7.47; --scale: 8"></div></div>
-            <span class="bar-value">7.47</span>
-          </div>
-        </div>
-        <div class="bar-chart fid-chart" role="img" aria-label="PSNR: DC-SAE 29.79, DC-AE 26.25">
-          <p class="has-text-centered normal-highlight is-size-6"><span class="title-highlight">+3.54 dB</span> PSNR over DC-AE</p>
-          <p class="pipeline-caption">Reconstruction PSNR (&uarr;), both at 32&times;</p>
-          <div class="bar-row">
-            <span class="bar-label">DC-SAE</span>
-            <div class="bar-track"><div class="bar-fill dcsae" style="--value: 29.79; --scale: 32"></div></div>
-            <span class="bar-value">29.79</span>
-          </div>
-          <div class="bar-row">
-            <span class="bar-label">DC-AE</span>
-            <div class="bar-track"><div class="bar-fill base" style="--value: 26.25; --scale: 32"></div></div>
-            <span class="bar-value">26.25</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <h3 class="subhead">ImageNet 512&times;512</h3>
-    <div class="paper-table-wrap">
-      <table class="paper-table">
-        <thead>
-          <tr>
-            <th>Generative Model</th><th class="l">Autoencoder</th><th>Comp.</th><th>Params (B)</th>
-            <th>gFID&darr; w/o CFG</th><th>gFID&darr; w/ CFG</th><th>IS&uarr;</th><th>PSNR&uarr;</th><th>rFID&darr;</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>DiT-XL</td><td class="l">Flux-VAE-f8c16</td><td>8&times;</td><td>0.68</td><td>27.35</td><td>8.72</td><td>53.09</td><td>&ndash;</td><td>&ndash;</td></tr>
-          <tr><td>DiT-XL</td><td class="l">SD-VAE-f8c4</td><td>8&times;</td><td>0.67</td><td>12.03</td><td>3.04</td><td>105.25</td><td>&ndash;</td><td>&ndash;</td></tr>
-          <tr><td>SiT-XL</td><td class="l">SD-VAE-f8c4</td><td>8&times;</td><td>0.67</td><td>&ndash;</td><td>2.62</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr>
-          <tr><td>MAGVIT-v2</td><td class="l">&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>3.07</td><td>1.91</td><td>213.10</td><td>&ndash;</td><td>&ndash;</td></tr>
-          <tr><td>MAR-L</td><td class="l">&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>2.74</td><td>1.73</td><td>205.20</td><td>&ndash;</td><td>&ndash;</td></tr>
-          <tr><td>EDM2-XXL</td><td class="l">&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>1.91</td><td>1.81</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr>
-          <tr><td>SiT-XL</td><td class="l">DC-AE-f32c32</td><td>32&times;</td><td>0.67</td><td>7.47</td><td>2.41</td><td>131.37</td><td>26.25</td><td>0.20</td></tr>
-          <tr><td>USiT-H</td><td class="l">DC-AE-f32c32</td><td>32&times;</td><td>0.50</td><td>3.80</td><td>1.89</td><td>174.58</td><td>26.25</td><td>0.20</td></tr>
-          <tr><td>USiT-2B</td><td class="l">DC-AE-f32c32</td><td>32&times;</td><td>1.58</td><td>2.90</td><td>1.72</td><td>187.68</td><td>26.25</td><td>0.20</td></tr>
-          <tr class="ours"><td>DiT-XL <small>+ DDT wide head</small></td><td class="l">DC-SAE</td><td>32&times;</td><td>0.83</td><td>3.37</td><td>1.99</td><td>205.83</td><td>29.79</td><td>0.16</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">A DiT-XL trained for 400 epochs in the frozen 32&times; DC-SAE latent, following the DC-AE training protocol.</p>
-
-    <h3 class="subhead">ImageNet 256&times;256</h3>
-    <div class="paper-table-wrap">
-      <table class="paper-table">
-        <thead>
-          <tr><th>Diffusion Model</th><th>Setting</th><th class="l">Autoencoder</th><th>rFID&darr;</th><th>gFID&darr;</th><th>IS&uarr;</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>DiT-XL</td><td>f32c32</td><td class="l">DC-AE</td><td>0.69</td><td>10.18</td><td>107.49</td></tr>
-          <tr><td>DiT-XL</td><td>f32c128</td><td class="l">DC-AE</td><td>0.26</td><td>26.44</td><td>53.41</td></tr>
-          <tr><td>DiT-XL</td><td>f32c32</td><td class="l">DC-AE-1.5</td><td>&ndash;</td><td>10.50</td><td>107.99</td></tr>
-          <tr><td>DiT-XL</td><td>f32c128</td><td class="l">DC-AE-1.5</td><td>0.26</td><td>17.31</td><td>80.38</td></tr>
-          <tr class="ours"><td>DiT-XL</td><td>f32c64</td><td class="l">DC-SAE (Ours)</td><td>0.45</td><td>5.67</td><td>156.68</td></tr>
-          <tr class="group"><td colspan="6">Stronger generators</td></tr>
-          <tr><td>USiT-H</td><td>f32c32</td><td class="l">DC-AE</td><td>0.69</td><td>3.89</td><td>167.40</td></tr>
-          <tr><td>USiT-H</td><td>f32c32</td><td class="l">DC-AE-1.5</td><td>&ndash;</td><td>4.15</td><td>166.94</td></tr>
-          <tr><td>DiT-XL</td><td>f32c128</td><td class="l">TC-AE</td><td>0.35</td><td>7.16</td><td>&ndash;</td></tr>
-          <tr class="ours"><td>DiT-XL <small>+ DDT wide head</small></td><td>f32c64</td><td class="l">DC-SAE (Ours)</td><td>0.45</td><td>3.31</td><td>180.71</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 class="subhead">Samples</h3>
-    <div class="pipeline-card">
-      <img src="static/images/12pic.jpg" alt="ImageNet 512x512 samples generated in the DC-SAE latent space" class="pipeline-image" loading="lazy">
-      <p class="pipeline-caption">ImageNet 512&times;512 samples generated in the 32&times; DC-SAE latent space, with randomly sampled class labels.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Throughput ============ -->
-<section class="section case-gallery-section" id="throughput-section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 performance-title has-text-centered">Autoencoder Throughput</h2>
-    <p class="has-text-centered normal-highlight is-size-6" style="margin-bottom:1rem">
-      <span class="title-highlight">&gt;4&times;</span> faster than DC-AE at every resolution
+<!-- ====================== Main results ====================== -->
+<section class="block" id="results-section">
+  <div class="wrap">
+    <h3 class="section-head">ImageNet Class-Conditional Generation</h3>
+    <p class="section-sub">
+      A DiT-XL is trained for 400 epochs in the frozen 32&times; DC-SAE latent, following the DC-AE training protocol.
     </p>
-    <section class="chart-section" aria-label="Throughput comparison">
-      <div class="chart-card">
-        <div class="bar-chart tp-group" role="img" aria-label="256&times;256 throughput: DC-SAE 1233.5, DC-AE 265.6 imgs/s">
-          <p class="tp-head">256&times;256 <span class="tp-speedup">4.64&times;</span></p>
-          <div class="bar-row"><span class="bar-label">DC-SAE</span><div class="bar-track"><div class="bar-fill dcsae" style="--value: 1233.5; --scale: 1300"></div></div><span class="bar-value">1233.5</span></div>
-          <div class="bar-row"><span class="bar-label">DC-AE</span><div class="bar-track"><div class="bar-fill base" style="--value: 265.6; --scale: 1300"></div></div><span class="bar-value">265.6</span></div>
-        </div>
-        <div class="bar-chart tp-group" role="img" aria-label="512&times;512 throughput: DC-SAE 330.8, DC-AE 69.7 imgs/s">
-          <p class="tp-head">512&times;512 <span class="tp-speedup">4.75&times;</span></p>
-          <div class="bar-row"><span class="bar-label">DC-SAE</span><div class="bar-track"><div class="bar-fill dcsae" style="--value: 330.8; --scale: 350"></div></div><span class="bar-value">330.8</span></div>
-          <div class="bar-row"><span class="bar-label">DC-AE</span><div class="bar-track"><div class="bar-fill base" style="--value: 69.7; --scale: 350"></div></div><span class="bar-value">69.7</span></div>
-        </div>
-        <div class="bar-chart tp-group" role="img" aria-label="1024&times;1024 throughput: DC-SAE 76.8, DC-AE 17.4 imgs/s">
-          <p class="tp-head">1024&times;1024 <span class="tp-speedup">4.41&times;</span></p>
-          <div class="bar-row"><span class="bar-label">DC-SAE</span><div class="bar-track"><div class="bar-fill dcsae" style="--value: 76.8; --scale: 80"></div></div><span class="bar-value">76.8</span></div>
-          <div class="bar-row"><span class="bar-label">DC-AE</span><div class="bar-track"><div class="bar-fill base" style="--value: 17.4; --scale: 80"></div></div><span class="bar-value">17.4</span></div>
-        </div>
+
+    <div class="bar-cards">
+      <div class="bar-card" role="img" aria-label="gFID: DC-SAE 3.37, DC-AE 7.47">
+        <div class="bar-head"><span class="t">Generation quality</span><span class="big">2.22&times; lower</span></div>
+        <div class="bar-sub">ImageNet 512&times;512, gFID w/o CFG (&darr;)</div>
+        <div class="bar-row"><span class="bar-label ours">DC-SAE</span><div class="bar-track"><div class="bar-fill ours" style="--value: 3.37; --scale: 8"></div></div><span class="bar-value">3.37</span></div>
+        <div class="bar-row"><span class="bar-label">DC-AE</span><div class="bar-track"><div class="bar-fill base" style="--value: 7.47; --scale: 8"></div></div><span class="bar-value">7.47</span></div>
       </div>
-    </section>
-    <p class="table-caption">
+      <div class="bar-card" role="img" aria-label="PSNR: DC-SAE 29.79, DC-AE 26.25">
+        <div class="bar-head"><span class="t">Reconstruction</span><span class="big">+3.54 dB</span></div>
+        <div class="bar-sub">ImageNet 512&times;512, PSNR (&uarr;), both at 32&times;</div>
+        <div class="bar-row"><span class="bar-label ours">DC-SAE</span><div class="bar-track"><div class="bar-fill ours" style="--value: 29.79; --scale: 32"></div></div><span class="bar-value">29.79</span></div>
+        <div class="bar-row"><span class="bar-label">DC-AE</span><div class="bar-track"><div class="bar-fill base" style="--value: 26.25; --scale: 32"></div></div><span class="bar-value">26.25</span></div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="tbl-title">ImageNet 512&times;512<small>Class-conditional generation and reconstruction</small></div>
+      <div class="table-scroll">
+        <table class="res-table">
+          <thead>
+            <tr>
+              <th>Generative Model</th><th class="l">Autoencoder</th><th>Comp.</th><th>Params (B)</th>
+              <th>gFID&darr; w/o CFG</th><th>gFID&darr; w/ CFG</th><th>IS&uarr;</th><th>PSNR&uarr;</th><th>rFID&darr;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>DiT-XL</td><td class="l">Flux-VAE-f8c16</td><td>8&times;</td><td>0.68</td><td>27.35</td><td>8.72</td><td>53.09</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td>DiT-XL</td><td class="l">SD-VAE-f8c4</td><td>8&times;</td><td>0.67</td><td>12.03</td><td>3.04</td><td>105.25</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td>SiT-XL</td><td class="l">SD-VAE-f8c4</td><td>8&times;</td><td>0.67</td><td>&ndash;</td><td>2.62</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td>MAGVIT-v2</td><td class="l">&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>3.07</td><td>1.91</td><td>213.10</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td>MAR-L</td><td class="l">&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>2.74</td><td>1.73</td><td>205.20</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td>EDM2-XXL</td><td class="l">&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>1.91</td><td>1.81</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr>
+            <tr><td>SiT-XL</td><td class="l">DC-AE-f32c32</td><td>32&times;</td><td>0.67</td><td>7.47</td><td>2.41</td><td>131.37</td><td>26.25</td><td>0.20</td></tr>
+            <tr><td>USiT-H</td><td class="l">DC-AE-f32c32</td><td>32&times;</td><td>0.50</td><td>3.80</td><td>1.89</td><td>174.58</td><td>26.25</td><td>0.20</td></tr>
+            <tr><td>USiT-2B</td><td class="l">DC-AE-f32c32</td><td>32&times;</td><td>1.58</td><td>2.90</td><td>1.72</td><td>187.68</td><td>26.25</td><td>0.20</td></tr>
+            <tr class="ours"><td>DiT-XL <small>+ DDT wide head</small></td><td class="l">DC-SAE</td><td>32&times;</td><td>0.83</td><td>3.37</td><td>1.99</td><td>205.83</td><td>29.79</td><td>0.16</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="tbl-title">ImageNet 256&times;256<small>Comparison with DC-AE and DC-AE-1.5</small></div>
+      <div class="table-scroll">
+        <table class="res-table">
+          <thead>
+            <tr><th>Diffusion Model</th><th>Setting</th><th class="l">Autoencoder</th><th>rFID&darr;</th><th>gFID&darr;</th><th>IS&uarr;</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>DiT-XL</td><td>f32c32</td><td class="l">DC-AE</td><td>0.69</td><td>10.18</td><td>107.49</td></tr>
+            <tr><td>DiT-XL</td><td>f32c128</td><td class="l">DC-AE</td><td>0.26</td><td>26.44</td><td>53.41</td></tr>
+            <tr><td>DiT-XL</td><td>f32c32</td><td class="l">DC-AE-1.5</td><td>&ndash;</td><td>10.50</td><td>107.99</td></tr>
+            <tr><td>DiT-XL</td><td>f32c128</td><td class="l">DC-AE-1.5</td><td>0.26</td><td>17.31</td><td>80.38</td></tr>
+            <tr class="ours"><td>DiT-XL</td><td>f32c64</td><td class="l">DC-SAE (Ours)</td><td>0.45</td><td>5.67</td><td>156.68</td></tr>
+            <tr class="group"><td colspan="6">Stronger generators</td></tr>
+            <tr><td>USiT-H</td><td>f32c32</td><td class="l">DC-AE</td><td>0.69</td><td>3.89</td><td>167.40</td></tr>
+            <tr><td>USiT-H</td><td>f32c32</td><td class="l">DC-AE-1.5</td><td>&ndash;</td><td>4.15</td><td>166.94</td></tr>
+            <tr><td>DiT-XL</td><td>f32c128</td><td class="l">TC-AE</td><td>0.35</td><td>7.16</td><td>&ndash;</td></tr>
+            <tr class="ours"><td>DiT-XL <small>+ DDT wide head</small></td><td>f32c64</td><td class="l">DC-SAE (Ours)</td><td>0.45</td><td>3.31</td><td>180.71</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="section-head" style="font-size:1.4rem; margin-top:40px">Samples</h3>
+    <figure class="figure-card dark" style="margin:0">
+      <img src="static/images/12pic.jpg" alt="ImageNet 512x512 samples generated in the DC-SAE latent space" loading="lazy" width="3774" height="1254">
+    </figure>
+    <p class="caption">ImageNet 512&times;512 samples generated in the 32&times; DC-SAE latent space, with randomly sampled class labels.</p>
+  </div>
+</section>
+
+<!-- ====================== Throughput ====================== -->
+<section class="block" id="throughput-section">
+  <div class="wrap">
+    <h3 class="section-head">Autoencoder Throughput</h3>
+    <p class="section-sub">DC-SAE is <b>more than 4&times; faster</b> than DC-AE end to end at every resolution.</p>
+    <div class="bar-cards">
+      <div class="bar-card" role="img" aria-label="256x256 throughput: DC-SAE 1233.5, DC-AE 265.6 imgs/s">
+        <div class="bar-head"><span class="t">256&times;256</span><span class="big">4.64&times;</span></div>
+        <div class="bar-sub">imgs/s (&uarr;)</div>
+        <div class="bar-row"><span class="bar-label ours">DC-SAE</span><div class="bar-track"><div class="bar-fill ours" style="--value: 1233.5; --scale: 1300"></div></div><span class="bar-value">1233.5</span></div>
+        <div class="bar-row"><span class="bar-label">DC-AE</span><div class="bar-track"><div class="bar-fill base" style="--value: 265.6; --scale: 1300"></div></div><span class="bar-value">265.6</span></div>
+      </div>
+      <div class="bar-card" role="img" aria-label="512x512 throughput: DC-SAE 330.8, DC-AE 69.7 imgs/s">
+        <div class="bar-head"><span class="t">512&times;512</span><span class="big">4.75&times;</span></div>
+        <div class="bar-sub">imgs/s (&uarr;)</div>
+        <div class="bar-row"><span class="bar-label ours">DC-SAE</span><div class="bar-track"><div class="bar-fill ours" style="--value: 330.8; --scale: 350"></div></div><span class="bar-value">330.8</span></div>
+        <div class="bar-row"><span class="bar-label">DC-AE</span><div class="bar-track"><div class="bar-fill base" style="--value: 69.7; --scale: 350"></div></div><span class="bar-value">69.7</span></div>
+      </div>
+      <div class="bar-card" role="img" aria-label="1024x1024 throughput: DC-SAE 76.8, DC-AE 17.4 imgs/s">
+        <div class="bar-head"><span class="t">1024&times;1024</span><span class="big">4.41&times;</span></div>
+        <div class="bar-sub">imgs/s (&uarr;)</div>
+        <div class="bar-row"><span class="bar-label ours">DC-SAE</span><div class="bar-track"><div class="bar-fill ours" style="--value: 76.8; --scale: 80"></div></div><span class="bar-value">76.8</span></div>
+        <div class="bar-row"><span class="bar-label">DC-AE</span><div class="bar-track"><div class="bar-fill base" style="--value: 17.4; --scale: 80"></div></div><span class="bar-value">17.4</span></div>
+      </div>
+    </div>
+    <p class="table-note">
       End-to-end autoencoder throughput (imgs/s) of DC-SAE-f32c64 vs DC-AE-f32c32. Measured on one H200 in bf16, batch 32, with 10 warmup and 50 timed iterations.
       DC-SAE-f32c256 gets 1054.5 / 284.4 / 67.9 imgs/s.
     </p>
   </div>
 </section>
 
-<!-- ============ Text-to-image ============ -->
-<section class="section hero is-light" id="t2i-section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 performance-title has-text-centered">Text-to-Image Generation</h2>
-    <p class="section-lead">
+<!-- ====================== Text-to-image ====================== -->
+<section class="block" id="t2i-section">
+  <div class="wrap">
+    <h3 class="section-head">Text-to-Image Generation</h3>
+    <p class="section-sub">
       We trained a 1.6B DiT on 32&times; DC-SAE latents with Qwen3-1.7B as the text encoder. Training ran 100K iterations at 256&sup2;,
       then 100K at 512&sup2; (batch 1024), then 40K iterations of SFT at 1024&sup2; (batch 256).
       It gets the highest GenEval score in this comparison and stays competitive on DPG-Bench with a generator 7.5&times; smaller.
     </p>
-    <div class="paper-table-wrap">
-      <table class="paper-table">
-        <thead>
-          <tr><th>Generative Model</th><th class="l">Autoencoder</th><th>Comp.</th><th>Params (B)</th><th>GenEval&uarr;</th><th>DPG-Bench&uarr;</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>DC-Gen-FLUX.1-Krea-12B</td><td class="l">DC-AE f32c32</td><td>32&times;</td><td>12</td><td>0.72</td><td class="best">87.073</td></tr>
-          <tr><td>DC-Gen-FLUX.1-Krea-12B</td><td class="l">DC-AE-1.5 f64c128</td><td>64&times;</td><td>12</td><td>0.59</td><td>75.439</td></tr>
-          <tr class="ours"><td>1.6B-DiT</td><td class="l">DC-SAE</td><td>32&times;</td><td>1.6</td><td class="best">0.84</td><td>86.007</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BibTeX ============ -->
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <div class="bibtex-header">
-      <h2 class="title">BibTeX</h2>
-      <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-        <i class="fas fa-copy"></i>
-        <span class="copy-text">Copy</span>
-      </button>
-    </div>
-    <pre id="bibtex-code"><code>@misc{dcsae2026,
-      title={DC-SAE: Deep Compression Semantic Autoencoder for Faster Diffusion Convergence},
-      author={Xu Huang and Ye Huang and Zijun Liao and Yuwei Niu and Xiaojie Li and Menghan Zhou and De Wen Soh and Xiaotong Li and Daquan Zhou},
-      year={2026},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}</code></pre>
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This page was built with the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
-            It is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-            <br>
-            Magic Group | Peking University
-          </p>
-        </div>
+    <div class="table-card">
+      <div class="table-scroll">
+        <table class="res-table">
+          <thead>
+            <tr><th>Generative Model</th><th class="l">Autoencoder</th><th>Comp.</th><th>Params (B)</th><th>GenEval&uarr;</th><th>DPG-Bench&uarr;</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>DC-Gen-FLUX.1-Krea-12B</td><td class="l">DC-AE f32c32</td><td>32&times;</td><td>12</td><td>0.72</td><td class="best">87.073</td></tr>
+            <tr><td>DC-Gen-FLUX.1-Krea-12B</td><td class="l">DC-AE-1.5 f64c128</td><td>64&times;</td><td>12</td><td>0.59</td><td>75.439</td></tr>
+            <tr class="ours"><td>1.6B-DiT</td><td class="l">DC-SAE</td><td>32&times;</td><td>1.6</td><td class="best">0.84</td><td>86.007</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+</section>
+
+<!-- ====================== BibTeX ====================== -->
+<section class="bibtex-section" id="BibTeX">
+  <div class="bibtex-head">
+    <h3>BibTeX</h3>
+    <button class="copy-btn" type="button" onclick="copyBibTeX(this)" title="Copy BibTeX to clipboard"><i class="fas fa-copy"></i> Copy</button>
+  </div>
+  <pre class="bibtex-code" id="bibtex-code">@misc{dcsae2026,
+  title         = {DC-SAE: Deep Compression Semantic Autoencoder for Faster Diffusion Convergence},
+  author        = {Xu Huang and Ye Huang and Zijun Liao and Yuwei Niu and Xiaojie Li and Menghan Zhou and De Wen Soh and Xiaotong Li and Daquan Zhou},
+  year          = {2026},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV}
+}</pre>
+</section>
+
+<footer>
+  Magic Group &middot; Peking University &nbsp;&middot;&nbsp;
+  Page design adapted from <a href="https://dagroup-pku.github.io/PhysisForcing.github.io/" target="_blank" rel="noopener">PhysisForcing</a>.
 </footer>
 
+<script>
+  function copyBibTeX(btn) {
+    const text = document.getElementById('bibtex-code').innerText;
+    const done = () => { const old = btn.innerHTML; btn.textContent = 'Copied'; setTimeout(() => { btn.innerHTML = old; }, 1600); };
+    if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done, () => {}); }
+  }
+</script>
 </body>
 </html>
