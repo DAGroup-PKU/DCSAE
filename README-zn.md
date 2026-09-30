@@ -18,8 +18,6 @@ Menghan Zhou<sup>2</sup> · De Wen Soh<sup>2</sup> · Xiaotong Li<sup>1</sup> ·
 
 </div>
 
-**模型下载：** [256px / 512px SAE、DiT 与 latent 统计量](https://huggingface.co/DAGroup-PKU/DCSAE) · [下载与存放说明](docs/installation-and-usage-zn.md#download-models)
-
 ![DC-SAE teaser：重建效果、生成质量与吞吐量](assets/teaser.jpg)
 
 ## 🎬 Demo

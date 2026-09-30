@@ -18,8 +18,6 @@ Menghan Zhou<sup>2</sup> · De Wen Soh<sup>2</sup> · Xiaotong Li<sup>1</sup> ·
 
 </div>
 
-**Pretrained models:** [256px / 512px SAE, DiT & latent statistics](https://huggingface.co/DAGroup-PKU/DCSAE) · [Download & setup](docs/installation-and-usage.md#download-models)
-
 ![DC-SAE teaser: reconstruction, generation quality and throughput](assets/teaser.jpg)
 
 ## 🎬 Demo
