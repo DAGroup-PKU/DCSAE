@@ -21,9 +21,9 @@ Menghan Zhou<sup>2</sup> · De Wen Soh<sup>2</sup> · Xiaotong Li<sup>1</sup> ·
 
 ## 🎬 Demo
 
-[![Watch the one-minute DC-SAE demo](assets/demo-poster.jpg)](assets/demo.mp4)
+https://github.com/user-attachments/assets/b29a4cd4-d103-4f7c-a890-2cdde307ef36
 
-**[▶ Watch the demo](assets/demo.mp4)** · [MP4](https://github.com/DAGroup-PKU/DCSAE/raw/refs/heads/main/assets/demo.mp4) · [English subtitles](assets/demo.vtt)
+**[▶ Watch the demo](https://github.com/user-attachments/assets/b29a4cd4-d103-4f7c-a890-2cdde307ef36)** · [MP4](https://github.com/DAGroup-PKU/DCSAE/raw/refs/heads/main/assets/demo.mp4) · [English subtitles](assets/demo.vtt)
 
 ## Overview
 
