@@ -11,11 +11,14 @@ Menghan Zhou<sup>2</sup> · De Wen Soh<sup>2</sup> · Xiaotong Li<sup>1</sup> ·
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](docs/installation-and-usage-zn.md#installation)
 [![PyTorch](https://img.shields.io/badge/PyTorch-training%20%26%20inference-EE4C2C?logo=pytorch&logoColor=white)](docs/installation-and-usage-zn.md)
+[![Hugging Face Models](https://img.shields.io/badge/🤗%20Hugging%20Face-Models-yellow)](https://huggingface.co/DAGroup-PKU/DCSAE)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 [English](README.md) · **简体中文** · [安装与使用](docs/installation-and-usage-zn.md)
 
 </div>
+
+**模型下载：** [256px / 512px SAE、DiT 与 latent 统计量](https://huggingface.co/DAGroup-PKU/DCSAE) · [下载与存放说明](docs/installation-and-usage-zn.md#download-models)
 
 ![DC-SAE teaser：重建效果、生成质量与吞吐量](assets/teaser.jpg)
 

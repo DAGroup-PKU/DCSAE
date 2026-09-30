@@ -29,7 +29,59 @@ your_data/imagenet/train/<class_id>/*.JPEG
 your_data/imagenet/val/<class_id>/*.JPEG
 ```
 
-SAE 数据路径可通过 YAML 的 `data.train_path`、`data.val_path` 或命令行的 `--train-path`、`--val-path` 指定；DiT 数据路径通过 `--data-path` 指定。训练集与验证集的类别顺序必须一致。默认生成示例使用 ImageNet 的 1,000 个类别。本仓库不分发数据集、预训练权重或训练得到的权重。
+SAE 数据路径可通过 YAML 的 `data.train_path`、`data.val_path` 或命令行的 `--train-path`、`--val-path` 指定；DiT 数据路径通过 `--data-path` 指定。训练集与验证集的类别顺序必须一致。默认生成示例使用 ImageNet 的 1,000 个类别。本 Git 仓库不存放数据集和权重文件；发布的 SAE/DiT 模型请按下文从 Hugging Face 下载。
+
+<a id="download-models"></a>
+
+### 下载发布的 DC-SAE 模型
+
+官方模型仓库 [DAGroup-PKU/DCSAE](https://huggingface.co/DAGroup-PKU/DCSAE) 提供以下两套文件，每个分辨率都有完整的权重、配置和统计量：
+
+| 目录 | 文件 | Latent 布局 |
+| --- | --- | --- |
+| `256/` | `sae.pt`、`dit.pt`、`latent_stats.pt`、`sae.yaml`、`dit.yaml` | 832 通道、8×8 网格、2× demerger |
+| `512/` | `sae.pt`、`dit.pt`、`latent_stats.pt`、`sae.yaml`、`dit.yaml` | 1,024 通道、16×16 网格、无 demerger |
+
+在**代码仓库根目录**运行以下命令，下载两组模型（合计约 10.4 GB），将原始 YAML 保留在权重旁，并将配置好本地路径的 YAML 写入 `your_configs/`。DINOv2 请按下一节单独下载。命令会实际创建这些 `your_*` 目录，可以直接保留这些目录名；若更改，请同步更改后续命令中的路径。
+
+```bash
+python -m pip install -U huggingface_hub PyYAML
+python - <<'PYTHON'
+from pathlib import Path
+from huggingface_hub import snapshot_download
+import yaml
+
+# Use ["256"] or ["512"] to download only one resolution.
+resolutions = ["256", "512"]
+snapshot_download(
+    repo_id="DAGroup-PKU/DCSAE",
+    local_dir="your_weights",
+    allow_patterns=[f"{size}/*" for size in resolutions],
+)
+for size in resolutions:
+    weights = Path("your_weights") / size
+    configs = Path("your_configs") / size
+    configs.mkdir(parents=True, exist_ok=True)
+    for name in ("sae", "dit"):
+        config = yaml.safe_load((weights / f"{name}.yaml").read_text())
+        if name == "sae":
+            config["encoder"]["dinov2_model_name"] = "your_pretrained/dinov2-with-registers-base"
+            config["data"]["train_path"] = "your_data/imagenet/train"
+            config["data"]["val_path"] = "your_data/imagenet/val"
+            config["checkpoint"]["sae_ckpt"] = str(weights / "sae.pt")
+            config["logging"]["output_dir"] = f"your_results/sae_{size}"
+        else:
+            config["misc"]["latent_stats_path"] = str(weights / "latent_stats.pt")
+        (configs / f"{name}.yaml").write_text(yaml.safe_dump(config, sort_keys=False))
+    print(f"Ready: {weights} and {configs}")
+PYTHON
+```
+
+下载完成后的文件位置与下文 PSNR/rFID、gFID 命令一致，无需手动移动权重。例如 512px gFID 使用 `your_weights/512/sae.pt`、`your_weights/512/dit.pt`、`your_weights/512/latent_stats.pt` 及 `your_configs/512/{sae,dit}.yaml`。
+
+这些发布权重必须使用下载的配套 YAML，不要换成代码仓库中的通用 `dinov2_hf64.yaml` 示例。评估发布的 DiT 时，直接使用下载的 latent 统计量；下文重新计算统计量的步骤用于训练新的 DiT。DiT checkpoint 含 `ema` 时，评估器优先加载 EMA。
+
+DINOv2、ImageNet 验证图像（PSNR/rFID 使用）和官方 FID 参考 NPZ（gFID 使用）需按下文分别下载。评估无需 DINO 判别器权重；它用于 SAE GAN 训练。
 
 ### 下载 DINOv2（带 registers 的 base 版本）
 
@@ -85,7 +137,7 @@ your_data/imagenet/
 your_eval_outputs/               # 每次运行使用新的子目录
 ```
 
-仓库**不附带** SAE/DiT checkpoint 和 latent 统计文件，请使用自己的训练产物。把文件重命名为 `sae.pt` 或 `dit.pt` 不会改变其格式。将对应的 resolved YAML（已解析配置）复制到 `your_configs/<resolution>/`。随附的 `dinov2_hf64.yaml` 仅为架构示例，并非适用于任意权重的通用配置。512px checkpoint 必须配套对应配置，仅修改 `data.image_size` 并不足够。
+SAE/DiT checkpoint 和 latent 统计文件单独托管于 Hugging Face，请使用上文下载命令，或使用自己的训练产物。把文件重命名为 `sae.pt` 或 `dit.pt` 不会改变其格式。将对应的 resolved YAML（已解析配置）复制到 `your_configs/<resolution>/`。随附的 `dinov2_hf64.yaml` 仅为架构示例，并非适用于任意权重的通用配置。512px checkpoint 必须配套对应配置，仅修改 `data.image_size` 并不足够。
 
 | 资源或设置 | 指定位置 |
 | --- | --- |

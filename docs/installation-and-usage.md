@@ -40,7 +40,72 @@ your_data/imagenet/val/<class_id>/*.JPEG
 Set SAE data paths in its YAML or with `--train-path` / `--val-path`;
 pass the DiT training dataset with `--data-path`. Train and validation class
 ordering must agree. Default generation examples assume 1,000 ImageNet classes.
-Dataset files and pretrained/trained weights are not distributed here.
+Datasets and weights are not stored in this Git repository. Download the released
+SAE/DiT models from Hugging Face as described below.
+
+<a id="download-models"></a>
+
+### Download the released DC-SAE models
+
+The official [DAGroup-PKU/DCSAE model repository](https://huggingface.co/DAGroup-PKU/DCSAE)
+provides the following files for **each** resolution:
+
+| Directory | Files | Latent layout |
+| --- | --- | --- |
+| `256/` | `sae.pt`, `dit.pt`, `latent_stats.pt`, `sae.yaml`, `dit.yaml` | 832 channels, 8×8 grid, 2× demerger |
+| `512/` | `sae.pt`, `dit.pt`, `latent_stats.pt`, `sae.yaml`, `dit.yaml` | 1,024 channels, 16×16 grid, no demerger |
+
+Run the following from the **repository root**. It downloads both model pairs
+(about 10.4 GB total), keeps the original YAMLs beside the weights, and writes
+local-path versions to `your_configs/`. Download DINOv2 separately using the next
+section. These `your_*` directories are the literal destinations of the commands;
+you can keep them or change the paths consistently.
+
+```bash
+python -m pip install -U huggingface_hub PyYAML
+python - <<'PYTHON'
+from pathlib import Path
+from huggingface_hub import snapshot_download
+import yaml
+
+# Use ["256"] or ["512"] to download only one resolution.
+resolutions = ["256", "512"]
+snapshot_download(
+    repo_id="DAGroup-PKU/DCSAE",
+    local_dir="your_weights",
+    allow_patterns=[f"{size}/*" for size in resolutions],
+)
+for size in resolutions:
+    weights = Path("your_weights") / size
+    configs = Path("your_configs") / size
+    configs.mkdir(parents=True, exist_ok=True)
+    for name in ("sae", "dit"):
+        config = yaml.safe_load((weights / f"{name}.yaml").read_text())
+        if name == "sae":
+            config["encoder"]["dinov2_model_name"] = "your_pretrained/dinov2-with-registers-base"
+            config["data"]["train_path"] = "your_data/imagenet/train"
+            config["data"]["val_path"] = "your_data/imagenet/val"
+            config["checkpoint"]["sae_ckpt"] = str(weights / "sae.pt")
+            config["logging"]["output_dir"] = f"your_results/sae_{size}"
+        else:
+            config["misc"]["latent_stats_path"] = str(weights / "latent_stats.pt")
+        (configs / f"{name}.yaml").write_text(yaml.safe_dump(config, sort_keys=False))
+    print(f"Ready: {weights} and {configs}")
+PYTHON
+```
+
+The resulting files match the PSNR/rFID and gFID commands below without moving
+weights manually. For example, the 512px gFID command reads
+`your_weights/512/sae.pt`, `your_weights/512/dit.pt`,
+`your_weights/512/latent_stats.pt`, and `your_configs/512/{sae,dit}.yaml`.
+Use the downloaded YAMLs for these checkpoints, rather than the generic bundled
+`dinov2_hf64.yaml` examples. Keep the released latent statistics for evaluating
+the released DiT; the statistics-computation section is for training a new DiT.
+The evaluator prefers `ema` if it is present in the DiT checkpoint.
+
+DINOv2, ImageNet validation images (for PSNR/rFID), and the official FID reference
+NPZs (for gFID) are separate downloads described below. You do not need the DINO
+discriminator checkpoint for evaluation; it is needed for SAE GAN training.
 
 ### Download DINOv2 (with registers, base)
 
@@ -104,7 +169,8 @@ your_data/imagenet/
 your_eval_outputs/               # Use a fresh subdirectory for each run
 ```
 
-SAE/DiT checkpoints and their latent statistics are **not bundled**. Use your
+SAE/DiT checkpoints and their latent statistics are hosted on Hugging Face,
+separately from this code repository. Use the download commands above or your own
 trained artifacts; renaming a checkpoint to `sae.pt` or `dit.pt` does not change
 its format. Copy the corresponding resolved YAMLs into `your_configs/<resolution>/`.
 The bundled `dinov2_hf64.yaml` files are architecture examples, not universal
