@@ -79,3 +79,5 @@ tests/        离线 CPU 检查
 源码采用 [MIT 许可证](LICENSE)。保留的第三方依赖及其许可证见 [第三方声明](THIRD_PARTY_NOTICES.md)。预训练模型与数据集各自适用其使用条款。
 
 代码检查及其验证范围记录于 [VALIDATION.md](VALIDATION.md)。
+
+我们的工作基于 [RAE 代码仓库](https://github.com/bytetriper/RAE)。感谢作者们的出色工作，以及对代码的开源分享。

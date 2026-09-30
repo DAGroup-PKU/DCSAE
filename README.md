@@ -79,3 +79,5 @@ Training uses standard **torchrun** for single-node or multi-node execution. The
 Source code is distributed under the [MIT License](LICENSE). See [Third-party notices](THIRD_PARTY_NOTICES.md) for retained dependencies and their licenses. Pretrained models and datasets remain subject to their own terms.
 
 Implementation checks and their scope are recorded in [VALIDATION.md](VALIDATION.md).
+
+Our work is based on the [RAE code repository](https://github.com/bytetriper/RAE). We thank the authors for their great work and for making their code publicly available.
