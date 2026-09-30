@@ -1,8 +1,6 @@
 <div align="center">
 
-# dc-sae
-
-### Deep Compression Semantic Autoencoder for Faster Diffusion Convergence
+# [NIPS2026🔥] DC-SAE: Deep Compression Semantic Autoencoder for Faster Diffusion Convergence
 
 Xu Huang<sup>1*</sup> · Ye Huang<sup>1*</sup> · Zijun Liao<sup>1*</sup> · Yuwei Niu<sup>1</sup> · Xiaojie Li<br>
 Menghan Zhou<sup>2</sup> · De Wen Soh<sup>2</sup> · Xiaotong Li<sup>1</sup> · Daquan Zhou<sup>1†</sup>
@@ -18,6 +16,14 @@ Menghan Zhou<sup>2</sup> · De Wen Soh<sup>2</sup> · Xiaotong Li<sup>1</sup> ·
 **English** · [简体中文](README-zn.md) · [Installation & Usage](docs/installation-and-usage.md)
 
 </div>
+
+![DC-SAE teaser: reconstruction, generation quality and throughput](assets/teaser.jpg)
+
+## 🎬 Demo
+
+[![Watch the one-minute DC-SAE demo](assets/demo-poster.jpg)](assets/demo.mp4)
+
+**[▶ Watch the demo](assets/demo.mp4)** · [MP4](https://github.com/DAGroup-PKU/DCSAE/raw/refs/heads/main/assets/demo.mp4) · [English subtitles](assets/demo.vtt)
 
 ## Overview
 
