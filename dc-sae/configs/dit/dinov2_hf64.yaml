@@ -1,0 +1,79 @@
+stage_2:
+  target: models.rae.stage2.models.DDT.DiTwDDTHead
+  params:
+    input_size: 16
+    patch_size: 1
+    in_channels: 832
+    hidden_size:
+    - 1152
+    - 2048
+    depth:
+    - 28
+    - 2
+    num_heads:
+    - 16
+    - 16
+    mlp_ratio: 4.0
+    class_dropout_prob: 0.1
+    num_classes: 1000
+    use_qknorm: true
+    use_swiglu: true
+    use_rope: true
+    use_rmsnorm: true
+    wo_shift: false
+    use_pos_embed: true
+transport:
+  params:
+    path_type: Linear
+    prediction: velocity
+    loss_weight: null
+    time_dist_type: uniform
+sampler:
+  mode: ODE
+  params:
+    sampling_method: euler
+    num_steps: 50
+    atol: 1.0e-06
+    rtol: 0.001
+    reverse: false
+guidance:
+  method: cfg
+  scale: 1.0
+  t_min: 0.0
+  t_max: 1.0
+misc:
+  latent_size:
+  - 832
+  - 16
+  - 16
+  num_classes: 1000
+  time_dist_shift_dim: 212992
+  time_dist_shift_base: 4096
+  latent_stats_path: your_weights/256/latent_stats.pt
+  per_channel_norm: true
+  zero_hf_mode: false
+  hf_zero_then_joint_mode: false
+  joint_start_step: 0
+  wandb_project: ''
+  wandb_name: ''
+training:
+  global_seed: 0
+  epochs: 1400
+  global_batch_size: 32
+  grad_accum_steps: 1
+  ema_decay: 0.9995
+  num_workers: 4
+  log_every: 100
+  balance_every: 10
+  ckpt_every: 25000
+  sample_every: 1000
+  base_lr: 0.0002
+  final_lr: 2.0e-05
+  beta:
+  - 0.9
+  - 0.95
+  wd: 0.0
+  schedule_type: linear
+  decay_start_epoch: 40
+  decay_end_epoch: 800
+  clip_grad: 1.0

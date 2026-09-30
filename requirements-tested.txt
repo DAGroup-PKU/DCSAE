@@ -1,0 +1,21 @@
+# Versions used for CPU validation (Python 3.12, macOS arm64).
+# Install the appropriate CUDA build of torch/torchvision on Linux.
+torch==2.14.0
+torchvision==0.29.0
+transformers==4.57.6
+diffusers==0.36.0
+numpy==2.5.3
+Pillow==12.3.0
+PyYAML==6.0.3
+omegaconf==2.3.1
+timm==1.0.30
+einops==0.8.2
+scipy==1.18.1
+tqdm==4.70.1
+safetensors==0.8.0
+accelerate==1.15.0
+lpips==0.1.4
+pytorch-fid==0.3.0
+torchdiffeq==0.2.5
+tensorboard==2.21.0
+sentencepiece==0.2.2

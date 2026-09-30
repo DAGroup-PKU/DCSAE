@@ -1,0 +1,86 @@
+data:
+  train_path: datasets/imagenet/train
+  val_path: datasets/imagenet/val
+  image_size: 512
+  batch_size: 1
+  num_workers: 4
+encoder:
+  type: qwen3_vit
+  qwen3_vit_model_name: Qwen/Qwen3-VL-8B-Instruct
+model:
+  decoder_type: vit_decoder
+  hidden_size: 4096
+  hidden_size_x: 4096
+  num_decoder_blocks: 12
+  nerf_max_freqs: 8
+  flow_steps: 10
+  time_dim: 256
+  vit_decoder_hidden_size: 1024
+  vit_decoder_num_layers: 24
+  vit_decoder_num_heads: 16
+  vit_decoder_intermediate_size: 4096
+  vit_decoder_dropout: 0.0
+  gradient_checkpointing: false
+  enable_hf_branch: true
+  hf_dim: 256
+  hf_encoder_config_path: dc-sae/configs/hf_encoder/hf_encoder_config_256_5block_resdown_wide.json
+  hf_dropout_prob: 0.4
+  hf_noise_std: 0.8
+  hf_noise_alpha_schedule: alpha_one
+  hf_loss_weight: 0.1
+  target_latent_channels: null
+  variational: false
+  kl_weight: 1.0e-08
+  skip_to_moments: true
+  noise_tau: 0.0
+  random_masking_channel_ratio: 0.0
+  denormalize_decoder_output: false
+  lora_rank: 0
+  lora_alpha: 0
+  lora_dropout: 0.0
+  enable_lora: false
+loss:
+  recon_l2_weight: 0.0
+  recon_l1_weight: 1.0
+  recon_lpips_weight: 1.0
+  recon_gan_weight: 0.5
+discriminator:
+  enabled: true
+  disc_type: dino
+  lr: 0.0002
+  start_step: 20000
+  weight_decay: 0.0
+  betas0: 0.5
+  betas1: 0.9
+  dino_ckpt_path: pretrained/dino_vit_small_patch8_224.pth
+  recipe: S_8
+  ks: 3
+  norm: bn
+  key_depths: 2,5,8,11
+  diffaug_prob: 1.0
+  diffaug_cutout: 0.2
+  ndf: 64
+  n_layers: 4
+optimizer:
+  lr: 0.0002
+  min_lr: 2.0e-05
+  betas0: 0.5
+  betas1: 0.9
+  weight_decay: 0.0
+  warmup_steps: 2500
+  scheduler: cosine
+training:
+  max_steps: 120000
+  precision: bf16
+  seed: 42
+logging:
+  output_dir: results_sae/qwen3_hf256_img512
+  log_every: 20
+  eval_every: 2000
+  save_every: 10000
+  val_max_batches: 0
+  wandb_project: ''
+  wandb_name: ''
+checkpoint:
+  sae_ckpt: ''
+  strict_load: false

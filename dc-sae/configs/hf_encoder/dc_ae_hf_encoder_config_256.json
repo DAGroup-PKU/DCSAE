@@ -1,0 +1,12 @@
+{
+    "in_channels": 3,
+    "out_channels": 256,
+    "width_list": [128,256,512,512,1024,1024],
+    "depth_list": [0,5,10,4,4,4],
+    "norm_num_groups": 32,
+    "act_fn": "silu",
+    "downsample_match_channel": true,
+    "downsample_shortcut": "averaging",
+    "out_shortcut": "averaging",
+    "patch_pool_shortcut": "averaging"
+}

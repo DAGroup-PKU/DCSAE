@@ -1,0 +1,20 @@
+# Install a CUDA-compatible PyTorch/torchvision pair before this file on Linux.
+torch>=2.6,<3
+torchvision>=0.21,<1
+transformers>=4.57,<5
+diffusers>=0.35,<0.37
+numpy>=1.26,<3
+Pillow>=10
+PyYAML>=6
+omegaconf>=2.3
+timm>=1.0
+einops>=0.8
+scipy>=1.11
+tqdm>=4.66
+safetensors>=0.4
+accelerate>=1.0
+lpips>=0.1.4
+pytorch-fid>=0.3.0
+torchdiffeq>=0.2.5
+tensorboard>=2.16
+sentencepiece>=0.2

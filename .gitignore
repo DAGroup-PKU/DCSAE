@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+results_sae/
+results_dit/
+eval_outputs/
+datasets/
+pretrained/
+checkpoints/
+wandb/
+*.pt
+*.pth
+*.safetensors
+*.npz
+*.log
+.DS_Store
+
+# Local assets and machine-specific resolved configurations
+your_pretrained/
+your_weights/
+your_configs/
+your_fid_refs/
+your_data/
+your_eval_outputs/
+your_results/
