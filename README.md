@@ -83,3 +83,17 @@ Source code is distributed under the [MIT License](LICENSE). See [Third-party no
 Implementation checks and their scope are recorded in [VALIDATION.md](VALIDATION.md).
 
 Our work is based on the [RAE code repository](https://github.com/bytetriper/RAE). We thank the authors for their great work and for making their code publicly available.
+
+## Citation
+
+```bibtex
+@misc{huang2026dcsaedeepcompressionsemantic,
+      title={DC-SAE: Deep Compression Semantic Autoencoder for Faster Diffusion Convergence}, 
+      author={Xu Huang and Ye Huang and Zijun Liao and Yuwei Niu and Xiaojie Li and Menghan Zhou and De Wen Soh and Xiaotong Li and Daquan Zhou},
+      year={2026},
+      eprint={2609.39222},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2609.39222}, 
+}
+```

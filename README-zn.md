@@ -83,3 +83,17 @@ tests/        离线 CPU 检查
 代码检查及其验证范围记录于 [VALIDATION.md](VALIDATION.md)。
 
 我们的工作基于 [RAE 代码仓库](https://github.com/bytetriper/RAE)。感谢作者们的出色工作，以及对代码的开源分享。
+
+## 引用
+
+```bibtex
+@misc{huang2026dcsaedeepcompressionsemantic,
+      title={DC-SAE: Deep Compression Semantic Autoencoder for Faster Diffusion Convergence}, 
+      author={Xu Huang and Ye Huang and Zijun Liao and Yuwei Niu and Xiaojie Li and Menghan Zhou and De Wen Soh and Xiaotong Li and Daquan Zhou},
+      year={2026},
+      eprint={2609.39222},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2609.39222}, 
+}
+```
