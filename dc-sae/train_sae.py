@@ -324,6 +324,7 @@ def build_model(cfg, device: torch.device) -> DCSAE:
         hf_dim=cfg.model.hf_dim,
         hf_encoder_type=getattr(cfg.model, "hf_encoder_type", "cnn"),
         hf_encoder_config_path=getattr(cfg.model, "hf_encoder_config_path", None),
+        hf_encoder_patch_size=getattr(cfg.model, "hf_encoder_patch_size", None),
         hf_token_norm=getattr(cfg.model, "hf_token_norm", False),
         hf_dropout_prob=cfg.model.hf_dropout_prob,
         hf_noise_std=cfg.model.hf_noise_std,

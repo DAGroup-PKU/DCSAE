@@ -206,6 +206,7 @@ class DCSAE(nn.Module):
         hf_dim: int = 256,
         hf_encoder_type: str = "cnn",
         hf_encoder_config_path: Optional[str] = None,
+        hf_encoder_patch_size: Optional[int] = None,  # None: decode patch size (after the DeMerger)
         hf_token_norm: bool = False,
         hf_dropout_prob: float = 0.4,
         hf_noise_std: float = 0.1,
@@ -444,7 +445,8 @@ class DCSAE(nn.Module):
                 hf_encoder_type=self.hf_encoder_type,
                 in_channels=in_channels,
                 out_channels=self.hf_dim,
-                patch_size=self.decode_patch_size,
+                patch_size=(self.decode_patch_size if hf_encoder_patch_size is None
+                            else int(hf_encoder_patch_size)),
                 config_path=hf_encoder_config_path,
             )
             self.hf_dim = getattr(self.hf_encoder, "out_channels", self.hf_dim)

@@ -67,6 +67,35 @@ class ReleaseTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 fresh(torch.randn(2, 9, 16))
 
+    def test_hf_encoder_patch_size_with_demerger(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = Path(tmp)
+            Dinov2WithRegistersModel(Dinov2WithRegistersConfig(
+                hidden_size=16, num_hidden_layers=1, num_attention_heads=2,
+                image_size=28, patch_size=14, num_register_tokens=2,
+                intermediate_size=32)).save_pretrained(tmp/'encoder')
+            x = torch.rand(1, 3, 32, 32)*2 - 1
+            found = {}
+            for hf_patch in (None, 16):
+                config = {
+                    'data': {'image_size':32},
+                    'encoder': {'type':'dinov2', 'dinov2_model_name':str(tmp/'encoder')},
+                    'model': {'decoder_type':'vit_decoder','hidden_size':16,'hidden_size_x':16,
+                        'vit_decoder_hidden_size':16,'vit_decoder_num_layers':1,
+                        'vit_decoder_num_heads':2,'vit_decoder_intermediate_size':32,
+                        'hf_dim':32,'hf_encoder_patch_size':hf_patch,
+                        'enable_de_merger':True,'de_merger_nhead':2},
+                }
+                config_path = tmp/f'sae_{hf_patch}.yaml';config_path.write_text(yaml.safe_dump(config))
+                model = build_model(load_config(str(config_path)), torch.device('cpu')).eval()
+                self.assertEqual(model.decode_patch_size, 8)
+                with torch.no_grad():
+                    found[hf_patch] = (model.hf_encoder.patch_size, tuple(model.hf_encoder(x).shape[-2:]))
+                    self.assertEqual(tuple(model(x).sample.shape), (1,3,32,32))
+            # Default follows the DeMerger's decode patch; an explicit size keeps the 2x2 latent grid.
+            self.assertEqual(found[None], (8,(4,4)))
+            self.assertEqual(found[16], (16,(2,2)))
+
     def test_sae_eval_cpu_end_to_end(self):
         with tempfile.TemporaryDirectory() as tmp:
             tmp = Path(tmp)

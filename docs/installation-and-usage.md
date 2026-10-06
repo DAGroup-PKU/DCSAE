@@ -53,10 +53,10 @@ provides the following files for **each** resolution:
 | Directory | Files | Latent layout |
 | --- | --- | --- |
 | `256/` | `sae.pt`, `dit.pt`, `latent_stats.pt`, `sae.yaml`, `dit.yaml` | 832 channels, 8×8 grid, 2× demerger |
-| `512/` | `sae.pt`, `dit.pt`, `latent_stats.pt`, `sae.yaml`, `dit.yaml` | 1,024 channels, 16×16 grid, no demerger |
+| `512/` | `sae.pt`, `dit.pt`, `latent_stats.pt`, `sae.yaml`, `dit.yaml` | 1,024 channels, 16×16 grid, 2× demerger |
 
 Run the following from the **repository root**. It downloads both model pairs
-(about 10.4 GB total), keeps the original YAMLs beside the weights, and writes
+(about 10.6 GB total), keeps the original YAMLs beside the weights, and writes
 local-path versions to `your_configs/`. Download DINOv2 separately using the next
 section. These `your_*` directories are the literal destinations of the commands;
 you can keep them or change the paths consistently.
@@ -176,6 +176,9 @@ its format. Copy the corresponding resolved YAMLs into `your_configs/<resolution
 The bundled `dinov2_hf64.yaml` files are architecture examples, not universal
 configs for arbitrary released checkpoints. In particular, a 512px checkpoint
 needs its own matching config; changing only `data.image_size` is insufficient.
+The released 512px `sae.yaml` also sets `model.hf_encoder_patch_size: 32`: its 2×
+demerger halves the decode patch to 16, while the encoders, and therefore the DiT
+latents, keep the 32-pixel HF token grid.
 
 | Asset or setting | Where it is selected |
 | --- | --- |

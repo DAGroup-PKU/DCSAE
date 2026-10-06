@@ -40,9 +40,9 @@ SAE 数据路径可通过 YAML 的 `data.train_path`、`data.val_path` 或命令
 | 目录 | 文件 | Latent 布局 |
 | --- | --- | --- |
 | `256/` | `sae.pt`、`dit.pt`、`latent_stats.pt`、`sae.yaml`、`dit.yaml` | 832 通道、8×8 网格、2× demerger |
-| `512/` | `sae.pt`、`dit.pt`、`latent_stats.pt`、`sae.yaml`、`dit.yaml` | 1,024 通道、16×16 网格、无 demerger |
+| `512/` | `sae.pt`、`dit.pt`、`latent_stats.pt`、`sae.yaml`、`dit.yaml` | 1,024 通道、16×16 网格、2× demerger |
 
-在**代码仓库根目录**运行以下命令，下载两组模型（合计约 10.4 GB），将原始 YAML 保留在权重旁，并将配置好本地路径的 YAML 写入 `your_configs/`。DINOv2 请按下一节单独下载。命令会实际创建这些 `your_*` 目录，可以直接保留这些目录名；若更改，请同步更改后续命令中的路径。
+在**代码仓库根目录**运行以下命令，下载两组模型（合计约 10.6 GB），将原始 YAML 保留在权重旁，并将配置好本地路径的 YAML 写入 `your_configs/`。DINOv2 请按下一节单独下载。命令会实际创建这些 `your_*` 目录，可以直接保留这些目录名；若更改，请同步更改后续命令中的路径。
 
 ```bash
 python -m pip install -U huggingface_hub PyYAML
@@ -137,7 +137,7 @@ your_data/imagenet/
 your_eval_outputs/               # 每次运行使用新的子目录
 ```
 
-SAE/DiT checkpoint 和 latent 统计文件单独托管于 Hugging Face，请使用上文下载命令，或使用自己的训练产物。把文件重命名为 `sae.pt` 或 `dit.pt` 不会改变其格式。将对应的 resolved YAML（已解析配置）复制到 `your_configs/<resolution>/`。随附的 `dinov2_hf64.yaml` 仅为架构示例，并非适用于任意权重的通用配置。512px checkpoint 必须配套对应配置，仅修改 `data.image_size` 并不足够。
+SAE/DiT checkpoint 和 latent 统计文件单独托管于 Hugging Face，请使用上文下载命令，或使用自己的训练产物。把文件重命名为 `sae.pt` 或 `dit.pt` 不会改变其格式。将对应的 resolved YAML（已解析配置）复制到 `your_configs/<resolution>/`。随附的 `dinov2_hf64.yaml` 仅为架构示例，并非适用于任意权重的通用配置。512px checkpoint 必须配套对应配置，仅修改 `data.image_size` 并不足够。发布的 512px `sae.yaml` 还设置了 `model.hf_encoder_patch_size: 32`：2× demerger 将解码 patch 减半为 16，而编码器（以及 DiT 使用的 latent）保持 32 像素的 HF token 网格。
 
 | 资源或设置 | 指定位置 |
 | --- | --- |

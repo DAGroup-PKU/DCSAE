@@ -56,6 +56,9 @@ class ModelConfig:
     hf_dim: int = 256
     hf_encoder_type: str = "cnn"
     hf_encoder_config_path: Optional[str] = None
+    # Pixel patch the HF encoder pools to. None uses the decode patch size, which a
+    # DeMerger halves; set it to keep a frozen encoder's original HF token grid.
+    hf_encoder_patch_size: Optional[int] = None
     hf_token_norm: bool = False
     hf_dropout_prob: float = 0.4
     hf_noise_std: float = 0.1

@@ -336,6 +336,7 @@ def build_dc_sae(sae_cfg, device: torch.device) -> DCSAE:
         hf_dim=sae_cfg.model.hf_dim,
         hf_encoder_type=getattr(sae_cfg.model, "hf_encoder_type", "cnn"),
         hf_encoder_config_path=getattr(sae_cfg.model, "hf_encoder_config_path", None),
+        hf_encoder_patch_size=getattr(sae_cfg.model, "hf_encoder_patch_size", None),
         hf_token_norm=getattr(sae_cfg.model, "hf_token_norm", False),
         hf_dropout_prob=0.0,  # Disable dropout for encoding
         hf_noise_std=0.0,
