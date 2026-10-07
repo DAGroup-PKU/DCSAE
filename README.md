@@ -11,6 +11,7 @@ Menghan Zhou<sup>2</sup> · De Wen Soh<sup>2</sup> · Xiaotong Li<sup>1</sup> ·
 
 [![arXiv](https://img.shields.io/badge/arXiv-2609.39222-b31b1b.svg?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2609.39222)
 [![Hugging Face Paper](https://img.shields.io/badge/🤗%20Hugging%20Face-Paper-yellow)](https://huggingface.co/papers/2609.39222)
+[![GitHub](https://img.shields.io/badge/GitHub-Code-181717?logo=github&logoColor=white)](https://github.com/DAGroup-PKU/DCSAE)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](docs/installation-and-usage.md#installation)
 [![PyTorch](https://img.shields.io/badge/PyTorch-training%20%26%20inference-EE4C2C?logo=pytorch&logoColor=white)](docs/installation-and-usage.md)
 [![Hugging Face Models](https://img.shields.io/badge/🤗%20Hugging%20Face-Models-yellow)](https://huggingface.co/DAGroup-PKU/DCSAE)
